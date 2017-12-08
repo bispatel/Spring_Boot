@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+	 <div class="container">   
+    <div style="padding:0 20px">
+    <table class="table table-striped">
+		<tr>
+		    <th>Id</th>
+		    <th>Name</th>
+		    <th>Email</th>
+		    <th>Created Date</th>
+		    <th>Actions</th>
+		</tr>  
+    	<tr th:each = "emp : ${employees}">
+    		<td th:text="${emp.id}"></td>
+    		<td th:text="${emp.name}"></td>
+    		<td th:text="${emp.email}"></td>    
+    		<td th:text="${emp.date}"></td>  		
+    		<td>    			
+    			<a th:href="@{/employeeEdit/{id}(id=${emp.id})}" class="btn btn-primary btn-xs">Edit</a>
+    			<!-- <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/employeeDelete/{id}(id=${emp.id})}" class="btn btn-danger btn-xs">Delete</a> -->
+    			 <a th:href="@{/employeeDelete/{id}(id=${emp.id})}" class="btn btn-danger btn-xs">Delete</a>
+    		</td>
+    	</tr>
+    </table>
+    <a href="/employeeAdd" class="btn btn-primary">Add Employee</a>
+	</div>    
+	</div>
+
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

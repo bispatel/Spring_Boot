@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+ <title>Edit Employee</title>
+    <div th:replace="fragments/header1 :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header1 :: header"></div>
+<div class="container">
+	<h1>Edit Employee</h1>
+	<div class="col-md-4">
+		<form th:object="${employee}" th:action="@{../employeeUpdate}" action="#" method="post">
+			<input type="hidden" th:field="*{id}" class="form-control"/>			
+			<input type="text" th:field="*{name}" class="form-control"
+				placeholder="Name" />				
+			<div style="clear: both; display: block; height: 10px;"></div>
+								
+			<input type="text" th:field="*{email}" class="form-control"
+				placeholder="Email" />				
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="submit" class="btn btn-primary" value="Save"></input>
+		</form>
+	</div>
+	</div>
+<div th:replace="fragments/footer1 :: footer"></div>
+
+</body>
+</html>
